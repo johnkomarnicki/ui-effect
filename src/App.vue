@@ -1,30 +1,61 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import Card from "./components/Card.vue";
+
+const tilePrompts = [
+  {
+    label: "Build a Login Page",
+    description:
+      "Create a clean login UI with email and password inputs and a submit button.",
+  },
+  {
+    label: "Style a Pricing Table",
+    description:
+      "Design a 3-column pricing layout with highlighted features and a recommended plan.",
+  },
+  {
+    label: "Animate a Button",
+    description:
+      "Add hover and click animations to a button for a more interactive user experience.",
+  },
+  {
+    label: "Design a Blog Card",
+    description:
+      "Layout an article preview card with image, title, summary, and a “Read More” link.",
+  },
+  {
+    label: "Build a Navigation Bar",
+    description:
+      "Create a responsive navbar with a logo, links, and a mobile menu toggle button.",
+  },
+];
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="page-wrapper">
+    <div class="card-grid">
+      <Card v-for="tile in tilePrompts" :tile="tile" />
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style>
+.page-wrapper {
+  padding: 0 32px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.card-grid {
+  /* padding-top: 10px; */
+  display: flex;
+  overflow-x: scroll;
+  gap: 8px;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
+/* .card-grid:has(.card:hover) .card:not(:hover),
+.card-grid:has(.card:focus) .card:not(:focus) {
+  opacity: 0.5;
+} */
 </style>
